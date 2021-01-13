@@ -9,4 +9,4 @@ Don't forget to add "@reboot python ipbysms.py" to your crontab ("crontab -e" to
 
 Et voilà !
 
-More on this here: https://raspicolas.wordpress.com/?p=233
+More on this here: https://raspicolas.wordpress.com/2021/01/13/ip-by-sms/
