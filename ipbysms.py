@@ -17,8 +17,9 @@ Version du 2 novembre 2020
 """
 
 from time import sleep, strftime
-import urllib2, socket
-import ConfigParser
+from urllib.request import urlopen
+import socket
+import configparser
 from os import path
 from sys import argv
 
@@ -66,7 +67,7 @@ def get_conf():
 
 	tolog("Loading the configuration file...")
 	try:
-		config = ConfigParser.ConfigParser()
+		config = configparser.ConfigParser()
 		config.read(CONFIG_FILENAME)
 
 		param["user1"] = config.get('SMSAPI', 'user')
@@ -92,8 +93,7 @@ def send_text_sms(text):
 	tolog("Sending message '%s' by SMS..." % (msg))
 	api_url = "%s?user=%s&pass=%s&msg=%s" % (SMS_URL, param["user1"], param["pass1"], msg)
 	try:
-		req = urllib2.Request(api_url)
-		rep = urllib2.urlopen(req)
+		rep = urlopen(api_url)
 		HTTPError = rep.getcode()
 		tolog("...return code %s: %s" % (HTTPError, HTTPErrorCode[HTTPError]))
 		return True
